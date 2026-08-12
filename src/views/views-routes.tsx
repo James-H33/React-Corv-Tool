@@ -1,9 +1,11 @@
-import { Navigate } from "react-router-dom";
-import Views from "./Views";
+import { Navigate } from 'react-router-dom';
+import Views from './Views';
+import CarsList from './cars/cars-list/CarsList';
+import Car from './cars/car/Car';
 
-export const viewsReoutes = [
+export const viewsRoutes = [
   {
-    path: "/v",
+    path: '/v',
     element: <Views />,
     children: [
       {
@@ -11,8 +13,12 @@ export const viewsReoutes = [
         element: <Navigate to="cars" replace />,
       },
       {
-        path: "cars",
-        element: <div>Cars View</div>,
+        path: 'cars',
+        element: <CarsList />,
+      },
+      {
+        path: 'cars/:id',
+        element: <Car />,
       },
     ],
   },

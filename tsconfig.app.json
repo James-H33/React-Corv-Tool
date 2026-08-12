@@ -19,8 +19,14 @@
     /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
+    "erasableSyntaxOnly": false,
     "noFallthroughCasesInSwitch": true,
+
+    /* Magic Paths */
+    "paths": {
+      "@common/*": ["./src/common/*"],
+      "@store/*": ["./src/common/store/*"],
+    }
   },
   "include": ["src"]
 }

@@ -1,0 +1,29 @@
+export const ErrorCodes = {
+  INVALID_EMAIL_OR_PASSWORD: '001',
+  USER_NOT_FOUND: '002',
+  DATABASE_CONNECTION_ERROR: '003',
+  CAR_NOT_FOUND: '004',
+  GEMINI_API_ERROR_SERVICE_UNAVAILABLE: '005',
+  UNKNOWN_ERROR: '999',
+  INVALID_REFRESH_TOKEN: '006',
+  ACCESS_TOKEN_EXPIRED: '007',
+  INVALID_RESET_PASSWORD_TOKEN: '008',
+  USER_ALREADY_EXISTS: '009',
+  INVALID_CREATION_TOKEN: '010',
+  USER_NOT_VERIFIED: '011',
+};
+
+export const ErrorCodesReason = {
+  '001': 'Invalid email or password',
+  '002': 'User not found',
+  '003': 'Database connection error',
+  '004': 'Car not found',
+  '005': 'Gemini API service unavailable',
+  '006': 'Invalid refresh token',
+  '007': 'Access token expired',
+  '008': 'Invalid reset password token',
+  '999': 'Unknown error',
+  '009': 'User already exists',
+  '010': 'Invalid creation token',
+  '011': 'User not verified',
+};

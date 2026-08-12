@@ -1,0 +1,15 @@
+:host {
+  display: contents;
+}
+
+.ct-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  --ct-icon-size: 16px;
+  font-size: var(--ct-icon-size);
+
+  svg {
+    color: inherit;
+  }
+}
