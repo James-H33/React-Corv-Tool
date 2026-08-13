@@ -1,11 +1,13 @@
-interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  value: string | number;
-}
+import './TextField.scss';
 
-function TextField({ value, ...props }: TextFieldProps) {
+interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+function TextField({ className, value, ...props }: TextFieldProps) {
+  const inputClassName = `ct-input ${className || ''}`.trim();
+
   return (
     <input
-      className="ct-input"
+      className={inputClassName}
       value={value}
       {...props}
     />

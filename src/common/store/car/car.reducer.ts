@@ -59,6 +59,21 @@ const carSlice = createSlice({
         cars: payload.cars,
       }
     });
+
+    builder.addCase(CarActions.setActiveForm, (state, { payload }) => {
+      return {
+        ...state,
+        activeForm: payload.formType,
+      }
+    });
+
+    builder.addCase(CarActions.updateCarSuccess, (state, { payload }) => {
+      return {
+        ...state,
+        cars: payload.cars,
+        activeForm: null,
+      }
+    })
   },
 });
 
