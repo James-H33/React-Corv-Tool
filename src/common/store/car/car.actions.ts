@@ -22,7 +22,7 @@ export const loadCarByIdSuccess = createAction<{ cars: Car[] }>(
 export const updateCar = createAction<{ id: string; data: Partial<Car> }>(
   'car/updateCar'
 );
-export const updateCarSuccess = createAction<{ cars: Car[] }>('car/updateCar');
+export const updateCarSuccess = createAction<{ cars: Car[] }>('car/updateCarSuccess');
 
 export const setSearchText = createAction<{ text: string }>(
   'car/setSearchText'

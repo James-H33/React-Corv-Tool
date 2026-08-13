@@ -1,11 +1,13 @@
-import { createListenerMiddleware } from '@reduxjs/toolkit';
-import * as CarActions from './car.actions';
 import { carService } from '@common/services/cars.service';
-import { selectCars } from './car.selectors';
-import type { RootState } from '../store';
 import type { Car } from '@common/types/car.interface';
+import { createListenerMiddleware } from '@reduxjs/toolkit';
+import type { RootState } from '../store';
+import * as CarActions from './car.actions';
+import { selectCars } from './car.selectors';
 
 export const CarMiddlewareEffects = createListenerMiddleware();
+
+const selectRootState = (api) => api.getState() as RootState;
 
 CarMiddlewareEffects.startListening({
   actionCreator: CarActions.loadCars,
@@ -67,6 +69,35 @@ CarMiddlewareEffects.startListening({
       );
     } catch {
       console.error('Create car failed:', action.payload.car);
+    }
+  },
+});
+
+CarMiddlewareEffects.startListening({
+  actionCreator: CarActions.updateCar,
+  effect: async (action, listenerApi) => {
+    try {
+      const state = listenerApi.getState() as RootState;
+      const existingCars = selectCars(state);
+      const carId = action.payload.id;
+      const update = action.payload.data;
+      const updatedCar = await carService.updateCar(carId, update);
+
+      const updatedCars = existingCars.map((car) => {
+        if (car.id === carId) {
+          return updatedCar;
+        }
+
+        return car;
+      });
+
+      listenerApi.dispatch(
+        CarActions.updateCarSuccess({
+          cars: updatedCars,
+        })
+      );
+    } catch {
+      console.error('CarActions.updateCar Failed.');
     }
   },
 });

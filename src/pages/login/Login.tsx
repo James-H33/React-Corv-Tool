@@ -1,18 +1,12 @@
-import { useCallback, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import * as AppActions from '@store/application/application.actions';
-import { useNavigate } from 'react-router-dom';
 import Button from '@common/components/button/Button';
+import * as AppActions from '@store/application/application.actions';
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   dispatch(
-  //     AppActions.login({ email: 'llahwj33@gmail.com', password: 'testing123' })
-  //   );
-  // }, [dispatch]);
 
   const handleNavigateToCars = useCallback(() => {
     navigate('/v/cars');
