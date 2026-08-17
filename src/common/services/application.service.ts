@@ -1,7 +1,6 @@
 import { logout, setAuthToken } from '@common/store/application/application.actions';
 import * as AppSelectors from '@common/store/application/application.selectors';
-import { store, type AppDispatch } from '@store/store';
-import { useDispatch, useSelector } from 'react-redux';
+import { store } from '@store/store';
 
 const baseApiUrl = import.meta.env.VITE_BASE_API_URL ?? '';
 
@@ -19,19 +18,6 @@ function updateAuthToken(token: string): void {
 
 function clearSession(): void {
   store.dispatch(logout());
-}
-
-export function useApplicationService() {
-  const dispatch = useDispatch<AppDispatch>();
-  const authToken = useSelector(AppSelectors.selectAuthToken);
-
-  return {
-    authToken,
-    getBaseApiUrl,
-    getAuthToken: () => authToken,
-    setAuthToken: (token: string) => dispatch(setAuthToken(token)),
-    logout: () => dispatch(logout()),
-  };
 }
 
 export const applicationService = {
